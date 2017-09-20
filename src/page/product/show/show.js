@@ -1,4 +1,5 @@
 import Product from '../../../controller/productShow'
+import CodeController from '../../../controller/code'
 
 Page({
   data: {
@@ -45,6 +46,9 @@ Page({
   },
   tapCodeImage() {
     Product.tapCodeImage()
+  },
+  tapCreateCode() {
+    CodeController.goTo()
   },
   tabAvatar() {
     Product.tabAvatar()

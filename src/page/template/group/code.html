@@ -9,3 +9,7 @@
   </view>
 </view>
 <!--scsan code end-->
+
+<view wx:if="{{group.type_id == 2}}" class="padding_20">
+  <button type="primary" bindtap="tapCreateCode">生成自定义二维码</button>
+</view>
