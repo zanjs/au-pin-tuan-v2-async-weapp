@@ -97,12 +97,13 @@ _build = {
       .pipe(rename((path) => {
         path.extname = '.wxss'
       }))
-      .pipe(replace(_setting.dev.repUrl, repUrl))
+      // .pipe(replace(_setting.dev.repUrl, repUrl))
+      .pipe(replace('___src___', _setting.build.ImgSrc))
       .pipe(autoprefixer({
         browsers: ['> 1%'],
         cascade: false
       }))
-      .pipe(replace('img___src', _setting.build.ImgSrc))
+      
       .pipe(gulp.dest(buildSrc))
   },
   js: function(file, type = 'dev') {
