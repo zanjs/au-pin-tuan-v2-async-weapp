@@ -1,5 +1,3 @@
-import regeneratorRuntime from '../libs/runtime'
-import co from '../libs/co'
 // dao
 import Dao from '../dao/base'
 import Group from '../dao/group'
@@ -18,30 +16,28 @@ import Print from '../fn/print'
 import GroupFn from '../fn/group'
 
 export default {
-  init() {
+  async init() {
     const vm = Stack.page()
     Status.loading()
 
-    co(function* c() {
-      yield Dao.auLogin()
+    await Dao.auLogin()
 
-      const groupIndex = yield Group.index()
+    const groupIndex = await Group.index()
 
-      Status.loadingClone()
+    Status.loadingClone()
 
-      const groups = groupIndex.group
+    const groups = groupIndex.group
 
-      GroupFn.List(groups)
+    GroupFn.List(groups)
 
-      vm.setData({
-        groups,
-      })
-      Print.Log(groupIndex)
-
-      if (!groups.length) {
-        Status.notfind(true)
-      }
+    vm.setData({
+      groups,
     })
+    Print.Log(groupIndex)
+
+    if (!groups.length) {
+      Status.notfind(true)
+    }
   },
   /**
    * 查看详情
@@ -71,20 +67,19 @@ export default {
       }
     })
   },
-  delGroup(id) {
+  async delGroup(id) {
     const that = this
-    co(function* c() {
-      const delReq = yield Group.destroy(id)
 
-      if (delReq.error) {
-        MSG.showModal(delReq.message)
-        return
-      }
+    const delReq = await Group.destroy(id)
 
-      MSG.title('ok')
+    if (delReq.error) {
+      MSG.showModal(delReq.message)
+      return
+    }
 
-      that.init()
-      Print.Log(delReq)
-    })
+    MSG.title('ok')
+
+    that.init()
+    Print.Log(delReq)
   },
 }
