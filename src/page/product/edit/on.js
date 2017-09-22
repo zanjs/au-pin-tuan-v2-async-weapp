@@ -1,4 +1,4 @@
-import Product from '../../../controller/product'
+import Product from '../../../controller/placardEdit'
 
 export default {
   onLoad(options) {
