@@ -8,14 +8,14 @@ export default {
    * @param {any} id
    */
   placardShowShare(id) {
-    Go.navToOut(`${Route.placardShow}?share=true&id=${id}`)
+    Go.reLaunch(`${Route.placardShow}?share=true&id=${id}`)
   },
   /**
    * 跳转商品团购详细页显示分享提示
    * @param {any} id
    */
   productShowShare(id) {
-    Go.navToOut(`${Route.productShow}?share=true&id=${id}`)
+    Go.reLaunch(`${Route.productShow}?share=true&id=${id}`)
   },
   /**
    * 打开拼团详细页

@@ -52,4 +52,13 @@ export default {
     })
     vm.navBack(1, time)
   },
+  /**
+   * 关闭所有页面，打开到应用内的某个页面
+   * @param {any} url 
+   */
+  reLaunch(url) {
+    wx.reLaunch({
+      url,
+    })
+  },
 }
