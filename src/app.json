@@ -11,7 +11,8 @@
     "page/placard/edit/edit",
     "page/help/help",
     "page/group/index",
-    "page/email/email"
+    "page/email/email",
+    "page/groupCode/groupCode"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -22,10 +23,10 @@
     "enablePullDownRefresh": false
   },
   "networkTimeout": {
-    "request": 9999,
-    "connectSocket": 9999,
-    "uploadFile": 9999,
-    "downloadFile": 9999
+    "request": 29999,
+    "connectSocket": 29999,
+    "uploadFile": 29999,
+    "downloadFile": 29999
   },
   "debug": true
 }
