@@ -9,8 +9,7 @@ export default {
     submitName: '更新接龙',
     requiredTitle: '报名人必填信息,默认无需填写',
     imageLoad: true,
-    imageList: [{
-      src: '',
-    }],
+    imageList: [],
+    type_id: 2,
   },
 }

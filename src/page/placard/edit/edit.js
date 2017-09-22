@@ -10,6 +10,7 @@ Page({
     placeholderTitle: '一句话标题',
     submitName: '更新接龙',
     imageLoad: true,
+    type_id: 1,
     imageList: [],
   },
   onLoad(options) {

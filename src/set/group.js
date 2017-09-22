@@ -22,7 +22,7 @@ export default {
     if (group.image) {
       group.image = group.image.split(',')
       that.ImageList(group.image)
-      // group.image = FnImage.AddHost(group.image)
+        // group.image = FnImage.AddHost(group.image)
     }
 
     if (description.length > 50) {
@@ -58,7 +58,7 @@ export default {
   ImageList(arr) {
     const vm = Stack.page()
     const len = arr.length
-    const imageList = []
+    const imageList = [{}, {}, {}, {}]
     const image = []
     let i
     for (i = 0; i < len; i += 1) {
@@ -69,7 +69,9 @@ export default {
           src: Config.FileHost + item,
           path: item,
         }
-        imageList.push(obj)
+
+        // imageList.push(obj)
+        imageList[i] = obj
         image.push(Config.FileHost + item)
       }
     }
