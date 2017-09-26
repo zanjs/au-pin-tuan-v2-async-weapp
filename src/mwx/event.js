@@ -14,4 +14,21 @@ export default {
   formId(event) {
     return event.detail.formId
   },
+  index(event) {
+    return event.currentTarget.dataset.index
+  },
+  current(event) {
+    return event.detail.current
+  },
+  /**
+   * 当前图片src地址
+   * @param {any} event 
+   * @returns 
+   */
+  src(event) {
+    return event.currentTarget.dataset.src
+  },
+  id(event) {
+    return event.currentTarget.dataset.id
+  },
 }

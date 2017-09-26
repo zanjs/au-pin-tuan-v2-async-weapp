@@ -58,4 +58,11 @@ export default {
   navBack(title) {
     Go.submitNavBack(title)
   },
+  /**
+   * 展示自定义二维码
+   * @param {any} id 
+   */
+  groupCode(id) {
+    Go.navTo(Route.groupCode + id)
+  },
 }

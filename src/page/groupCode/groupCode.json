@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": " "
+  "navigationBarTitleText": "点击长按保存",
+  "navigationBarBackgroundColor": "#F7DF57",
+  "navigationBarTextStyle": "#FFFFFF"
 }
