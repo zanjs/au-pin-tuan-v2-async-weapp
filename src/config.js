@@ -1,8 +1,10 @@
+import Version from './version'
+
 module.exports = {
-  Version: '0.0.1',
+  Version,
   LogWrite: true,
-  // ApiHost: 'https://au.anla.io/',
-  ApiHost: 'http://au.de/',
+  ApiHost: 'https://au.anla.io/',
+  // ApiHost: 'http://au.de/',
   FileHost: 'http://img.au.anla.io/storage/',
   // ApiHost: 'http://192.168.1.184:8000/',
   // FileHost: 'http://192.168.1.184:8000',
