@@ -11,11 +11,11 @@ export default {
    * @param {any} id
    * @returns
    */
-  store(id) {
+  store(id, user) {
     return new Promise((resolve) => {
       const url = `${CONFIG.ApiHost}api/group/option/${id}`
-
-      const group = HTTP.get(url)
+      const data = { user }
+      const group = HTTP.get(url, data)
 
       group.then((res) => {
         console.log(`create++${res}`)

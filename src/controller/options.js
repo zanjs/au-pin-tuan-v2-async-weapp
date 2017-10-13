@@ -8,12 +8,16 @@ export default {
     Print.Log(ops)
     const source = ops.source
     const id = ops.id
+    const user = ops.user
     if (!id) {
       return
     }
     if (!source) {
       return
     }
-    Option.source(id)
+    if (!user) {
+      return
+    }
+    Option.source(id, user)
   },
 }
