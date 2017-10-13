@@ -5,7 +5,7 @@ import Option from '../provider/option'
 
 export default {
   source(ops) {
-    Print.Error(ops)
+    Print.Log(ops)
     const source = ops.source
     const id = ops.id
     if (!id) {
