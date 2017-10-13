@@ -74,16 +74,18 @@ export default {
    * 发起GET请求
    *
    * @param {any} url
-   * @param {any} data
+   * @param {any} objdata
    * @returns
    */
-  get(url, data = {}) {
+  get(url, objdata = {}) {
     const vm = this
+    const data = objdata
     return new Promise((resolve) => {
       console.log('get')
       console.log(url)
 
       const key = wx.getStorageSync(STORAGE.userKey)
+      const userInfo = wx.getStorageSync(STORAGE.userInfo)
         // let key = "123"
       if (!key) {
         const obj = {
@@ -93,6 +95,10 @@ export default {
         }
         resolve(obj)
         return
+      }
+
+      if (userInfo) {
+        data.user_id = userInfo.id
       }
 
       HEADER.Authorization = `Bearer ${key}`

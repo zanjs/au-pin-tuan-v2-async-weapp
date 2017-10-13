@@ -1,8 +1,10 @@
 import Product from '../../../controller/productShow'
+import Option from '../../../controller/options'
 
 export default {
   onLoad(options) {
     Product.onLoad(options)
+    Option.source(options)
   },
   onShow() {
     Product.init()
