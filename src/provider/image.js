@@ -17,48 +17,45 @@ export default {
    * 点击选择图片上传
    * @param {any} e
    */
-  Upload(e) {
+  async Upload(e) {
     const vm = Stack.page()
     const imgIndex = Event.dataset(e, 'id')
     const data = vm.data
     const imageList = data.imageList
 
+    const filepath = await WXimage.chooseImage()
 
-    co(function* c() {
-      const filepath = yield WXimage.chooseImage()
+    if (!filepath) {
+      Print.Log('选择图片取消')
+      return
+    }
+    Print.Log(filepath)
+    Print.Log(imgIndex)
+    imageList[imgIndex].wxfile = filepath
+    imageList[imgIndex].loading = true
 
-      if (!filepath) {
-        Print.Log('选择图片取消')
-        return
-      }
-      Print.Log(filepath)
-      Print.Log(imgIndex)
-      imageList[imgIndex].wxfile = filepath
-      imageList[imgIndex].loading = true
-
-      vm.setData({
-        imageList,
-        loading: true,
-      })
-
-      const imgPath = yield Image.store(filepath)
-
-      Print.Log(imgPath)
-      if (!imgPath) {
-        return
-      }
-
-      imageList[imgIndex].path = imgPath.path
-      imageList[imgIndex].src = imgPath.src
-      imageList[imgIndex].loading = false
-
-      vm.setData({
-        imageList,
-        loading: false,
-      })
-
-      Istorage.set(Istorage.imageList, imageList)
+    vm.setData({
+      imageList,
+      loading: true,
     })
+
+    const imgPath = await Image.store(filepath)
+
+    Print.Log(imgPath)
+    if (!imgPath) {
+      return
+    }
+
+    imageList[imgIndex].path = imgPath.path
+    imageList[imgIndex].src = imgPath.src
+    imageList[imgIndex].loading = false
+
+    vm.setData({
+      imageList,
+      loading: false,
+    })
+
+    Istorage.set(Istorage.imageList, imageList)
   },
   destroy(e) {
     const vm = Stack.page()

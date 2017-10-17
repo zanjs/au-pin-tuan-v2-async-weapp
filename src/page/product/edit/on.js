@@ -4,9 +4,7 @@ export default {
   onLoad(options) {
     Product.onLoad(options)
   },
-  onShow() {
-    Product.init()
-  },
+  onShow() {},
   onReady() {},
   onHide() {},
   onUnload() {},

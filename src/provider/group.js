@@ -30,26 +30,19 @@ import GroupFn from '../fn/group'
 import ImageFn from '../fn/image'
 
 export default {
-  editInit() {
-    const vm = Stack.page()
-    const data = vm.data
-
-    co(function* c() {
-      yield Dao.auLogin()
-
-      const groupEdit = yield Group.edit(data.id)
-      const group = groupEdit.group
-      SetGroup.Group(group)
-      Print.Log(group)
-      SetUser.info()
-      SetGroup.ImageListAdd()
-      if (group.type_id !== 2) {
-        return
-      }
-
-      const products = yield Product.show(group.id)
-      SetGroup.products(products.products)
-    })
+  async editInit(id) {
+    await Dao.auLogin()
+    const groupEdit = await Group.edit(id)
+    const group = groupEdit.group
+    SetGroup.Group(group)
+    Print.Log(group)
+    SetUser.info()
+    // SetGroup.ImageListAdd()
+    if (group.type_id !== 2) {
+      return
+    }
+    const products = await Product.show(group.id)
+    SetGroup.products(products.products)
   },
   store() {
     const vm = Stack.page()

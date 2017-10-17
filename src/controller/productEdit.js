@@ -21,13 +21,12 @@ import EventM from '../mwx/event'
 export default {
   onLoad(ops) {
     const vm = Stack.page()
+    const id = ops.id
     vm.setData({
-      id: ops.id,
+      id,
       type_id: 2,
     })
-  },
-  init() {
-    GroupPro.editInit()
+    GroupPro.editInit(id)
   },
   bindTextAreaBlur(e) {
     SetGroup.description(e)
@@ -77,7 +76,6 @@ export default {
     const name = EventM.dataset(e, 'name')
     const products = vm.data.products
     products[index][name] = val
-
     SetProduct.products(products)
   },
   bindPorudctDel(e) {
