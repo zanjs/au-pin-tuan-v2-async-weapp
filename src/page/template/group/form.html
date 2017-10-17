@@ -6,7 +6,7 @@
       <include src="input.html" />
       <!--输入 end -->
       <view class="flex-box padding-top_10">
-        <view class="flex-2">
+        <view class="flex_2">
           <block wx:if="{{switch}}">
             <button type="{{group.open == 1 ? 'warn': 'primary'}}" size="mini" hover-class="button-hover" bindtap="tapOpen">
               {{group.open == 1 ? '截止': '开启'}}
@@ -19,8 +19,8 @@
             </button>
           </block>
         </view>
-        <view class="">
-          <button loading="{{loading}}" disabled="{{loading}}" wx:if="{{totalPrice}}" type="primary" size="mini" hover-class="button-hover" formType="submit">{{submitName}}</button>
+        <view wx:if="{{totalPrice}}" class="">
+          <button loading="{{loading}}" disabled="{{loading}}"  type="primary" size="mini" hover-class="button-hover" formType="submit">{{submitName}}</button>
         </view>
       </view>
     </view>
