@@ -1,13 +1,12 @@
 // stack
 import Stack from '../mwx/stack'
-import FnImage from '../fn/image'
-import Config from '../config'
 import FnString from '../fn/string'
 import Istorage from '../mwx/storage'
 // env
 import Env from '../env'
 import EventM from '../mwx/event'
 import DateTool from '../util/date'
+import SetImage from './image'
 
 export default {
   Group(data) {
@@ -16,12 +15,11 @@ export default {
     const title = group.title
     const description = group.description
     let desc = group.description
-    const that = this
     let descMore = false
     let descBtn = false
     if (group.image) {
       group.image = group.image.split(',')
-      that.ImageList(group.image)
+      SetImage.ImageList(group.image)
         // group.image = FnImage.AddHost(group.image)
     }
 
@@ -53,32 +51,6 @@ export default {
       required_u_phone: group.required_u_phone || 0,
       required_u_wechat: group.required_u_wechat || 0,
       required_u_address: group.required_u_address || 0,
-    })
-  },
-  ImageList(arr) {
-    const vm = Stack.page()
-    const len = arr.length
-    const imageList = [{}, {}, {}, {}]
-    const image = []
-    let i
-    for (i = 0; i < len; i += 1) {
-      const item = arr[i]
-      if (item) {
-        const obj = {
-          wxfile: Config.FileHost + item,
-          src: Config.FileHost + item,
-          path: item,
-        }
-
-        // imageList.push(obj)
-        imageList[i] = obj
-        image.push(Config.FileHost + item)
-      }
-    }
-
-    vm.setData({
-      imageList,
-      image,
     })
   },
   ImageListAdd() {

@@ -2,8 +2,6 @@
 import {
   Promise,
 } from '../libs/es6-promise'
-import regeneratorRuntime from '../libs/runtime'
-import co from '../libs/co'
 // stack
 import Stack from '../mwx/stack'
 import Comment from '../dao/comment'
@@ -19,7 +17,7 @@ import Dao from '../dao/base'
 import Group from '../dao/group'
 import Product from '../dao/product'
 import User from '../dao/user'
-import Istorage from '../mwx/storage'
+import StorageWX from '../mwx/storage'
 // filter
 import ImageFilter from '../filter/image'
 // middleware
@@ -78,8 +76,8 @@ export default {
       const id = val.group.id
       Print.Log(id)
 
-      Istorage.remove(Istorage.description)
-      Istorage.remove(Istorage.imageList)
+      StorageWX.remove(StorageWX.description)
+      StorageWX.remove(StorageWX.imageList)
 
       if (typeId === 1) {
         Go.placardShowShare(id)

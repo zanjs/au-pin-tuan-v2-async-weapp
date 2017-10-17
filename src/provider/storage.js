@@ -1,18 +1,18 @@
 // stack
 import Stack from '../mwx/stack'
-import Istorage from '../mwx/storage'
+import StorageWX from '../mwx/storage'
 
 export default {
   description() {
     const vm = Stack.page()
-    const description = Istorage.get(Istorage.description)
+    const description = StorageWX.get(StorageWX.description)
     if (description) {
       vm.setData({
         description,
       })
     }
-    const imageList = Istorage.get(Istorage.imageList)
-    const image = Istorage.get(Istorage.image)
+    const imageList = StorageWX.get(StorageWX.imageList)
+    const image = StorageWX.get(StorageWX.image)
 
     if (imageList) {
       vm.setData({
