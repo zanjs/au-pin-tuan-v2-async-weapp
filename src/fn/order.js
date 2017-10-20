@@ -13,4 +13,22 @@ export default {
     }
     return count
   },
+  myQuantity(product, myorder) {
+    const len = myorder.length
+    let i
+    let quantity = 0
+    const pId = product.id
+    for (i = 0; i < len; i++) {
+      const item = myorder[i]
+      const productId = item.product_id
+      if (productId == pId) {
+        quantity = item.quantity
+        break
+      }
+      console.log(product)
+      console.log(item)
+    }
+
+    return quantity
+  },
 }

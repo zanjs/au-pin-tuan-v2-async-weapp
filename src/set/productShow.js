@@ -6,19 +6,21 @@ import FnOrder from '../fn/order'
 import FnString from '../fn/string'
 
 export default {
-  products(data) {
+  products(data, myorder) {
     const vm = Stack.page()
     const len = data.length
+    console.log(myorder)
       // const products = data
     let i
     const products = []
     for (i = 0; i < len; i += 1) {
       const item = data[i]
+      const myquantity = myorder ? FnOrder.myQuantity(item, myorder) : 0
       const newItem = {
         product_id: item.id,
         product_quantity: item.quantity,
         product_order_count: FnOrder.orderCount(item.product_order),
-        quantity: 0,
+        quantity: myquantity,
         name: item.name,
         price: item.price,
       }

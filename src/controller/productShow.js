@@ -1,5 +1,3 @@
-import regeneratorRuntime from '../libs/runtime'
-import co from '../libs/co'
 // dao
 import Dao from '../dao/base'
 import Group from '../dao/group'
@@ -48,42 +46,41 @@ export default {
       MSG.showModal(Lang.ShareFriend, Lang.PostOK)
     }
   },
-  init() {
+  async init() {
     const vm = Stack.page()
     const data = vm.data
 
     Status.loading()
 
-    co(function* c() {
-      yield Dao.auLogin()
+    await Dao.auLogin()
 
-      const groupShow = yield Group.show(data.id)
+    const groupShow = await Group.show(data.id)
 
-      const group = groupShow.group
+    const group = groupShow.group
 
-      if (!group) {
-        Print.Log('group 错误了')
-        return
-      }
+    if (!group) {
+      Print.Log('group 错误了')
+      return
+    }
 
-      SetGroup.Group(group)
+    SetGroup.Group(group)
 
-      SetGroup.comment(groupShow.comment)
+    SetGroup.comment(groupShow.comment)
 
-      Print.Log(groupShow.group)
+    Print.Log(groupShow.group)
 
-      const productShow = yield Product.show(data.id)
-      const products = productShow.products
-      Print.Log(productShow.products)
+    const productShow = await Product.show(data.id)
+    const myorders = productShow.my_orders || []
+    const products = productShow.products
+    Print.Log(productShow.products)
 
-      SetProduct.products(products)
+    SetProduct.products(products, myorders)
 
-      GroupProvider.upComment()
-      GroupProvider.isOpen()
-      GroupProvider.userInfo()
+    GroupProvider.upComment()
+    GroupProvider.isOpen()
+    GroupProvider.userInfo()
 
-      Status.loadingClone()
-    })
+    Status.loadingClone()
   },
   bindKeyInput(e) {
     const vm = Stack.page()
@@ -120,7 +117,7 @@ export default {
     })
     Print.Log(vm)
   },
-  formSubmit(e) {
+  async formSubmit(e) {
     const vm = Stack.page()
     const comment = vm.data.comment
     let products = vm.data.products
@@ -161,13 +158,12 @@ export default {
     }
 
     Status.loading()
-    co(function* c() {
-      const req = yield Comment.store(obj)
-      Print.Log(req)
-      MSG.title(req.message)
-      Status.loadingClone()
-      GroupProvider.upComment()
-    })
+
+    const req = await Comment.store(obj)
+    Print.Log(req)
+    MSG.title(req.message)
+    Status.loadingClone()
+    GroupProvider.upComment()
   },
   tapImage(e) {
     const vm = Stack.page()
