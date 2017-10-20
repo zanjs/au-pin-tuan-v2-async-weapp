@@ -1,6 +1,3 @@
-import regeneratorRuntime from '../libs/runtime'
-import co from '../libs/co'
-
 import Image from '../dao/image'
 // stack
 import Stack from '../mwx/stack'

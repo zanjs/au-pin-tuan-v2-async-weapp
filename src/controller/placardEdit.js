@@ -12,13 +12,15 @@ import GroupMiddleware from '../middleware/group'
 export default {
   onLoad(ops) {
     const vm = Stack.page()
+    const id = ops.id
     vm.setData({
       id: ops.id,
       type_id: 1,
     })
+    GroupPro.editInit(id)
   },
   init() {
-    GroupPro.editInit()
+    
   },
   bindTitle(e) {
     SetGroup.title(e)

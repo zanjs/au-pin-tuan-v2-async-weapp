@@ -16,9 +16,7 @@ Page({
   onLoad(options) {
     Placard.onLoad(options)
   },
-  onShow() {
-    Placard.init()
-  },
+  onShow() {},
   bindTitle(e) {
     Placard.bindTitle(e)
   },

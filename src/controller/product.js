@@ -20,6 +20,9 @@ import SetRequired from '../set/required'
 import ImagePro from '../provider/image'
 // middle
 import ImageMiddle from '../middleware/image'
+// action
+import ConfirmAction from '../action/confirm'
+
 
 export default {
   onLoad() {
@@ -38,13 +41,20 @@ export default {
   bindTitle(e) {
     SetGroup.title(e)
   },
-  submit() {
+  async submit() {
     if (!GroupMiddleware.submit()) {
       return
     }
     if (!ProductMiddleware.submit()) {
       return
     }
+
+    const bool = await ConfirmAction.create()
+
+    if (!bool) {
+      return
+    }
+    
     GroupProvider.store()
   },
   /**
