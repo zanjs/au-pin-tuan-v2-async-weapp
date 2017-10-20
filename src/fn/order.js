@@ -25,8 +25,6 @@ export default {
         quantity = item.quantity
         break
       }
-      console.log(product)
-      console.log(item)
     }
 
     return quantity

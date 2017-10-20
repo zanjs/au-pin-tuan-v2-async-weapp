@@ -9,8 +9,8 @@ export default {
   products(data, myorder) {
     const vm = Stack.page()
     const len = data.length
-    console.log(myorder)
-      // const products = data
+
+    // const products = data
     let i
     const products = []
     for (i = 0; i < len; i += 1) {
