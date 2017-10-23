@@ -19,7 +19,7 @@ export default {
         success: (res) => {
           resolve(res)
         },
-        fail: (err) => {
+        fail: () => {
           resolve(false)
         },
       })

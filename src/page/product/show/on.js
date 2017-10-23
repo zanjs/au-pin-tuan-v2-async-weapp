@@ -4,10 +4,11 @@ import Option from '../../../controller/options'
 export default {
   onLoad(options) {
     Product.onLoad(options)
+    Product.init(options.id)
     Option.source(options)
   },
   onShow() {
-    Product.init()
+    // Product.init()
   },
   /**
    * 监听用户下拉动作

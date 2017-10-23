@@ -46,15 +46,12 @@ export default {
       MSG.showModal(Lang.ShareFriend, Lang.PostOK)
     }
   },
-  async init() {
-    const vm = Stack.page()
-    const data = vm.data
-
+  async init(id) {
     Status.loading()
 
     await Dao.auLogin()
 
-    const groupShow = await Group.show(data.id)
+    const groupShow = await Group.show(id)
 
     const group = groupShow.group
 
@@ -69,7 +66,7 @@ export default {
 
     Print.Log(groupShow.group)
 
-    const productShow = await Product.show(data.id)
+    const productShow = await Product.show(id)
     const myorders = productShow.my_orders || []
     const products = productShow.products
     Print.Log(productShow.products)
