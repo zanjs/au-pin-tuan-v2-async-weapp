@@ -87,9 +87,10 @@ export default {
   description(e) {
     const vm = Stack.page()
     const description = EventM.value(e)
-    vm.setData({
-      description,
-    })
+    // vm.setData({
+    //   description,
+    // })
+    vm.data.description = description
     Istorage.set(Istorage.description, description)
   },
   title(e) {
