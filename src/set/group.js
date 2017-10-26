@@ -96,9 +96,10 @@ export default {
   title(e) {
     const vm = Stack.page()
     const title = EventM.value(e)
-    vm.setData({
-      title,
-    })
+    vm.data.title = title
+    // vm.setData({
+    //   title,
+    // })
     Istorage.set(Istorage.title, title)
   },
   products(products) {
