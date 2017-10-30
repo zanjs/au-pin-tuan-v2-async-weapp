@@ -4,6 +4,7 @@ import {
 } from '../libs/es6-promise'
 // stack
 import Stack from '../mwx/stack'
+import Loading from '../message/loading'
 import Comment from '../dao/comment'
 import Print from '../fn/print'
 import Go from '../go'
@@ -27,10 +28,13 @@ import Status from '../data/status'
 import GroupFn from '../fn/group'
 import ImageFn from '../fn/image'
 
+
 export default {
   async editInit(id) {
     await Dao.auLogin()
+    Loading.open()
     const groupEdit = await Group.edit(id)
+    Loading.close()
     const group = groupEdit.group
     SetGroup.Group(group)
     Print.Log(group)
@@ -39,8 +43,10 @@ export default {
     if (group.type_id !== 2) {
       return
     }
+    Loading.open()
     const products = await Product.show(group.id)
     SetGroup.products(products.products)
+    Loading.close()
   },
   store() {
     const vm = Stack.page()
